@@ -31,7 +31,7 @@ class Database{
             ];
             $pdo = new PDO($connection,$this->user, $this->password, $options);
             return $pdo;
-        }catch(\Throwable $th){
+        }catch(PDOException $th){
             throw $th;
         }
     }
