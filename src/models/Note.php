@@ -30,6 +30,18 @@ class Note extends Database{
         $note = Note::createFromArray($query->fetch(PDO::FETCH_ASSOC));
         return $note;
     }
+
+    public static function getAll(){
+        $notes = [];
+        $db = new Database();
+        $query = $db->connect()->query("SELECT * FROM notes");
+
+        while( $r = $query->fetch(PDO::FETCH_ASSOC)){
+            $note = Note::createFromArray($r);
+            array_push($notes,$note);
+        }
+        return $notes;
+    }
     
     public static function createFromArray($arr):Note{
         $note = new Note($arr['title'],$arr['content']);
