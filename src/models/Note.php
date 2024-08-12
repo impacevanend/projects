@@ -12,12 +12,12 @@ class Note extends Database{
     }
 
     public function save(){
-        $query = $this->connect()->prepare("INSERT INTO notes(uuid, title, content, updated) VALUES(:uuid,:title,:contet)", NOW());
+        $query = $this->connect()->prepare("INSERT INTO notes(uuid, title, content, updated) VALUES(:uuid, :title, :content, NOW())");
         $query->execute(['title'=>$this->title,'uuid'=>$this->uuid,'content'=>$this->content]);
     }
     
     public function update(){
-        $query = $this->connect()->prepare("UPDATE notes SET title=:title, content=:content, updated: NOW() WHERE uuid=:uuid");
+        $query = $this->connect()->prepare("UPDATE notes SET title=:title, content=:content, updated=NOW() WHERE uuid=:uuid");
         $query->execute(['title'=>$this->title,'uuid'=>$this->uuid,'content'=>$this->content]);
 
     }
@@ -28,9 +28,10 @@ class Note extends Database{
         $query->execute(['uuid'=>$uuid]);
 
         $note = Note::createFromArray($query->fetch(PDO::FETCH_ASSOC));
+        return $note;
     }
     
-    public static function createFromArray($arr){
+    public static function createFromArray($arr):Note{
         $note = new Note($arr['title'],$arr['content']);
         $note->setUUID($arr['uuid']);
 
