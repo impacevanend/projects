@@ -1,0 +1,18 @@
+{
+    "name": "jose/notas",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Jose\\Notas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jose",
+            "email": "impacevanend@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

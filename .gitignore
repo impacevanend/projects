@@ -1,0 +1,28 @@
+# Entorno
+.env
+
+# Composer
+/vendor/
+/composer.lock
+
+# Directorios de IDEs
+/.idea/
+/.vscode/
+/nbproject/
+
+# Archivos de depuración
+*.log
+*.cache
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Otros archivos temporales
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+.phpunit.result.cache
+
+
